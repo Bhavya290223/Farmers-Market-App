@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Farmly</string>
+    <string-array name="units_array">
+        <item>Ton</item>
+        <item>Kg</item>
+        <item>Lbs</item>
+        <item>Units</item>
+        <item>Litres</item>
+    </string-array>
+</resources>

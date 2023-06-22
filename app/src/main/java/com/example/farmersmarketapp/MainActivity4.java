@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.net.URLEncoder;
 
 public class MainActivity4 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -66,5 +69,19 @@ public class MainActivity4 extends AppCompatActivity implements AdapterView.OnIt
         int quantity = Integer.parseInt(quantityEditText.getText().toString());
         totalPriceTextView = findViewById(R.id.textView19);
         totalPriceTextView.setText("Total Deal Price: "+String.valueOf(unitPrice*quantity));
+    }
+
+    public void Chat(View v) {
+        try {
+            Intent sendMsg = new Intent(Intent.ACTION_VIEW);
+            String url = "https://api.whatsapp.com/send?phone=" + "+92 1111111111" + "&text=" + URLEncoder.encode("Your Message to Contact Number", "UTF-8");
+            sendMsg.setPackage("com.whatsapp");
+            sendMsg.setData(Uri.parse(url));
+            if (sendMsg.resolveActivity(getPackageManager()) != null) {
+                startActivity(sendMsg);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
